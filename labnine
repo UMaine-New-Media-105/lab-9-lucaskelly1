@@ -1,0 +1,69 @@
+let someRandomBall = {
+  x: 100,
+  speedX: 5,
+  speedY: 2,
+  y: 100,
+  color: "orange",
+};
+
+let secondBall = {
+  x: 70,
+  speedX: 3,
+  speedY: 5,
+  y: 100,
+  color: "red",
+};
+
+let thirdBall = {
+  x: 20,
+  speedX: 3,
+  speedY: 5,
+  y: 100,
+  color: "green",
+};
+
+let fourthBall = {
+  x: 45,
+  speedX: 6,
+  speedY: 5,
+  y: 70,
+  color: "blue",
+};
+
+let fifthBall = {
+  x: 10,
+  speedX: 5,
+  speedY: 9,
+  y: 10,
+  color: "yellow",
+};
+
+let listOfBalls = [someRandomBall,secondBall,thirdBall,fourthBall,fifthBall];
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+
+  for (var i = 0; i < 5; i++) {
+  //  listOfBalls[i];
+
+    drawSprite(listOfBalls[i].x, listOfBalls[i].y, listOfBalls[i].color);
+    listOfBalls[i].x = listOfBalls[i].x + listOfBalls[i].speedX;
+    listOfBalls[i].y = listOfBalls[i].y + listOfBalls[i].speedY;
+
+    if (listOfBalls[i].x > width || listOfBalls[i].x < 0) {
+      listOfBalls[i].speedX = listOfBalls[i].speedX * -1;
+    }
+    if (someRandomBall.y > height-25 || someRandomBall.y < 25) {
+      listOfBalls[i].speedY = listOfBalls[i].speedY * -1;
+    }
+  }
+}
+
+function drawSprite(x, y, color) {
+  fill(color);
+  ellipse(x, y, 50);
+}
